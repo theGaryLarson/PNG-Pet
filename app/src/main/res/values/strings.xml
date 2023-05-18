@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">PNG Pet</string>
+    <string name="bed">Dog bed</string>
+    <string name="bed_description">A cozy bed for your pet</string>
+    <string name="cat_ball">A ball</string>
+    <string name="cat_ball_description">A ball that belongs to the neighbor cat</string>
+    <string name="chew_toy">Chew toy</string>
+    <string name="chew_toy_description">A chew toy. Great for playing tug-of-war</string>
+    <string name="dog_ball">A ball</string>
+    <string name="dog_ball_description">Your pets ball. Maybe they want to play fetch</string>
+    <string name="dog_food">Dog food</string>
+    <string name="dog_food_description">Mmmm… Food!! Maybe your pet is hungry?</string>
+    <string name="leash">Dog leash</string>
+    <string name="leash_description">Maybe your pet wants to go for a walk?</string>
+    <string name="shampoo">Dog shampoo</string>
+    <string name="shampoo_description">Uh oh shampoo! Maybe it\'s time to wash your stinky pet</string>
+
+    <string name="in_love_corgi">A very happy Corgi</string>
+    <string name="in_love_corgi_description">Whatever you\'re doing, it\'s right! Your pet loves it!</string>
+    <string name="hungry_corgi">A hungry Corgi</string>
+    <string name="hungry_corgi_description">You here grumbling. Maybe your pet is hungry</string>
+    <string name="sad_corgi">A sad Corgi</string>
+    <string name="sad_corgi_description">Oh no your pet is so sad</string>
+    <string name="sleepy_corgi">A smug-looking Corgi</string>
+    <string name="sleepy_corgi_description">It looks like your pet maybe getting sleepy…</string>
+
+</resources>
