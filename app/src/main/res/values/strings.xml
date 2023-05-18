@@ -21,7 +21,7 @@
     <string name="hungry_corgi_description">You here grumbling. Maybe your pet is hungry</string>
     <string name="sad_corgi">A sad Corgi</string>
     <string name="sad_corgi_description">Oh no your pet is so sad</string>
-    <string name="sleepy_corgi">A smug-looking Corgi</string>
-    <string name="sleepy_corgi_description">It looks like your pet maybe getting sleepy…</string>
+    <string name="sleepy_corgi">A sleepy looking Corgi</string>
+    <string name="sleepy_corgi_description">It looks like your pet may be getting sleepy…</string>
 
 </resources>
