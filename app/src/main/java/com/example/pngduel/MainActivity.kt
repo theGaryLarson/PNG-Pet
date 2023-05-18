@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -37,20 +38,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.pngduel.ui.theme.PNGDuelTheme
+import com.example.pngduel.ui.theme.PNGPetTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PNGDuelTheme {
+            PNGPetTheme {
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.tertiaryContainer),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    FightScene()
+                    PetCare()
                 }
             }
         }
@@ -60,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FightScene() {
+fun PetCare() {
 
     var currentStep by remember { mutableStateOf(1) }
     var squeezeCount by remember { mutableStateOf(0) }
@@ -90,9 +91,15 @@ Scaffold(
                 when (currentStep) {
                     1 -> {
                         CorgiTextAndImage(
-                            textLabelResourceId = R.string.sleepy_corgi,
+                            textLabelResourceId = R.string.sleepy_corgi_description,
                             drawableResourceId = R.drawable.sleepy_corgi,
-                            contentDescriptionResourceId = R.string.sleepy_corgi_description,
+                            contentDescriptionResourceId = R.string.sleepy_corgi,
+                            drawableResourceId1 = R.drawable.bed,
+                            contentDescriptionResourceId1 = R.string.bed_description,
+                            drawableResourceId2 = R.drawable.chew_toy,
+                            contentDescriptionResourceId2 = R.string.chew_toy_description,
+                            drawableResourceId3 = R.drawable.food,
+                            contentDescriptionResourceId3 = R.string.dog_food_description,
                             onImageClick = {
                                 currentStep = 2
                                 squeezeCount = (2..4).random()
@@ -101,9 +108,15 @@ Scaffold(
                     }
                     2 -> {
                         CorgiTextAndImage(
-                            textLabelResourceId = R.string.hungry_corgi,
+                            textLabelResourceId = R.string.hungry_corgi_description,
                             drawableResourceId = R.drawable.hungry_corgi,
-                            contentDescriptionResourceId = R.string.hungry_corgi_description,
+                            contentDescriptionResourceId = R.string.hungry_corgi,
+                            drawableResourceId1 = R.drawable.bed,
+                            contentDescriptionResourceId1 = R.string.bed_description,
+                            drawableResourceId2 = R.drawable.chew_toy,
+                            contentDescriptionResourceId2 = R.string.chew_toy_description,
+                            drawableResourceId3 = R.drawable.food,
+                            contentDescriptionResourceId3 = R.string.dog_food_description,
                             onImageClick = {
                                 squeezeCount--
                                 if (squeezeCount == 0) {
@@ -115,9 +128,15 @@ Scaffold(
 
                     3 -> {
                         CorgiTextAndImage(
-                            textLabelResourceId = R.string.in_love_corgi,
+                            textLabelResourceId = R.string.in_love_corgi_description,
                             drawableResourceId = R.drawable.in_love_corgi,
-                            contentDescriptionResourceId = R.string.in_love_corgi_description,
+                            contentDescriptionResourceId = R.string.in_love_corgi,
+                            drawableResourceId1 = R.drawable.bed,
+                            contentDescriptionResourceId1 = R.string.bed_description,
+                            drawableResourceId2 = R.drawable.chew_toy,
+                            contentDescriptionResourceId2 = R.string.chew_toy_description,
+                            drawableResourceId3 = R.drawable.food,
+                            contentDescriptionResourceId3 = R.string.dog_food_description,
                             onImageClick = {
                                 currentStep = 4
                             }
@@ -125,9 +144,15 @@ Scaffold(
                     }
                     4 -> {
                         CorgiTextAndImage(
-                            textLabelResourceId = R.string.sad_corgi,
+                            textLabelResourceId = R.string.sad_corgi_description,
                             drawableResourceId = R.drawable.sad_corgi,
-                            contentDescriptionResourceId = R.string.sad_corgi_description,
+                            contentDescriptionResourceId = R.string.sad_corgi,
+                            drawableResourceId1 = R.drawable.bed,
+                            contentDescriptionResourceId1 = R.string.bed_description,
+                            drawableResourceId2 = R.drawable.chew_toy,
+                            contentDescriptionResourceId2 = R.string.chew_toy_description,
+                            drawableResourceId3 = R.drawable.food,
+                            contentDescriptionResourceId3 = R.string.dog_food_description,
                             onImageClick = {
                                 currentStep = 1
                             }
@@ -150,6 +175,12 @@ fun CorgiTextAndImage(
     textLabelResourceId: Int,
     drawableResourceId: Int,
     contentDescriptionResourceId: Int,
+    drawableResourceId1: Int,
+    contentDescriptionResourceId1: Int,
+    drawableResourceId2: Int,
+    contentDescriptionResourceId2: Int,
+    drawableResourceId3: Int,
+    contentDescriptionResourceId3: Int,
     onImageClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -182,6 +213,25 @@ fun CorgiTextAndImage(
                 text = stringResource(textLabelResourceId),
                 style = MaterialTheme.typography.bodyLarge
             )
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_vertical)))
+            Row() {
+                Image(
+                    painter = painterResource(id = drawableResourceId1),
+                    contentDescription = stringResource(id = contentDescriptionResourceId1),
+                    modifier = Modifier.size(100.dp)
+                )
+                Image(
+                    painter = painterResource(id = drawableResourceId2),
+                    contentDescription = stringResource(id = contentDescriptionResourceId2),
+                    modifier = Modifier.size(100.dp)
+                )
+                Image(
+                    painter = painterResource(id = drawableResourceId3),
+                    contentDescription = stringResource(id = contentDescriptionResourceId3),
+                    modifier = Modifier.size(100.dp)
+                )
+
+            }
 
         }
     }
@@ -190,7 +240,7 @@ fun CorgiTextAndImage(
 @Preview(showBackground = true)
 @Composable
 fun LemonTextAndImagePreview() {
-    PNGDuelTheme {
-        FightScene()
+    PNGPetTheme {
+        PetCare()
     }
 }
