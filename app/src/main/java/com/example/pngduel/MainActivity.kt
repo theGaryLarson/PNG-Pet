@@ -39,6 +39,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pngduel.ui.theme.PNGPetTheme
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +67,7 @@ class MainActivity : ComponentActivity() {
 fun PetCare() {
 
     var currentStep by remember { mutableStateOf(1) }
-    var squeezeCount by remember { mutableStateOf(0) }
+
 Scaffold(
     topBar = {
         CenterAlignedTopAppBar(title = {
@@ -90,55 +93,91 @@ Scaffold(
             ) {
                 when (currentStep) {
                     1 -> {
+                        val correctDrawableResourceId = R.drawable.bed
                         CorgiTextAndImage(
                             textLabelResourceId = R.string.sleepy_corgi_description,
                             drawableResourceId = R.drawable.sleepy_corgi,
                             contentDescriptionResourceId = R.string.sleepy_corgi,
+
                             drawableResourceId1 = R.drawable.bed,
                             contentDescriptionResourceId1 = R.string.bed_description,
+
                             drawableResourceId2 = R.drawable.chew_toy,
                             contentDescriptionResourceId2 = R.string.chew_toy_description,
+
                             drawableResourceId3 = R.drawable.food,
                             contentDescriptionResourceId3 = R.string.dog_food_description,
+                            onAccessoryClick = {
+                                    clickedResourceId ->
+                                currentStep = if(clickedResourceId == correctDrawableResourceId) {
+                                    5
+                                } else {
+                                    4
+                                }
+                            },
                             onImageClick = {
-                                currentStep = 2
-                                squeezeCount = (2..4).random()
+
+                                currentStep = (1..3).filter{ it != currentStep }.random()
+
                             }
                         )
                     }
                     2 -> {
+                        val correctDrawableResourceId = R.drawable.food
                         CorgiTextAndImage(
                             textLabelResourceId = R.string.hungry_corgi_description,
                             drawableResourceId = R.drawable.hungry_corgi,
                             contentDescriptionResourceId = R.string.hungry_corgi,
+
                             drawableResourceId1 = R.drawable.bed,
                             contentDescriptionResourceId1 = R.string.bed_description,
+
                             drawableResourceId2 = R.drawable.chew_toy,
                             contentDescriptionResourceId2 = R.string.chew_toy_description,
+
                             drawableResourceId3 = R.drawable.food,
                             contentDescriptionResourceId3 = R.string.dog_food_description,
-                            onImageClick = {
-                                squeezeCount--
-                                if (squeezeCount == 0) {
-                                    currentStep = 3
+                            onAccessoryClick = {
+                                    clickedResourceId ->
+                                currentStep = if(clickedResourceId == correctDrawableResourceId) {
+                                    5
+                                } else {
+                                    4
                                 }
+                            },
+                            onImageClick = {
+                                currentStep = (1..3).filter{ it != currentStep }.random()
+
                             }
                         )
                     }
 
                     3 -> {
+                        val correctDrawableResourceId = R.drawable.water_dish
                         CorgiTextAndImage(
-                            textLabelResourceId = R.string.in_love_corgi_description,
-                            drawableResourceId = R.drawable.in_love_corgi,
-                            contentDescriptionResourceId = R.string.in_love_corgi,
+                            textLabelResourceId = R.string.thirsty_corgi_description,
+                            drawableResourceId = R.drawable.thirsty_corgi,
+                            contentDescriptionResourceId = R.string.thirsty_corgi,
+
                             drawableResourceId1 = R.drawable.bed,
                             contentDescriptionResourceId1 = R.string.bed_description,
+
                             drawableResourceId2 = R.drawable.chew_toy,
                             contentDescriptionResourceId2 = R.string.chew_toy_description,
-                            drawableResourceId3 = R.drawable.food,
-                            contentDescriptionResourceId3 = R.string.dog_food_description,
+
+                            drawableResourceId3 = R.drawable.water_dish,
+                            contentDescriptionResourceId3 = R.string.water_dish_description,
+                            onAccessoryClick = {
+                                    clickedResourceId ->
+                                currentStep = if(clickedResourceId == correctDrawableResourceId) {
+                                    5
+                                } else {
+                                    4
+                                }
+                            },
                             onImageClick = {
-                                currentStep = 4
+                                currentStep = (1..3).filter{ it != currentStep }.random()
+
                             }
                         )
                     }
@@ -147,14 +186,36 @@ Scaffold(
                             textLabelResourceId = R.string.sad_corgi_description,
                             drawableResourceId = R.drawable.sad_corgi,
                             contentDescriptionResourceId = R.string.sad_corgi,
-                            drawableResourceId1 = R.drawable.bed,
-                            contentDescriptionResourceId1 = R.string.bed_description,
-                            drawableResourceId2 = R.drawable.chew_toy,
-                            contentDescriptionResourceId2 = R.string.chew_toy_description,
-                            drawableResourceId3 = R.drawable.food,
-                            contentDescriptionResourceId3 = R.string.dog_food_description,
+                            drawableResourceId1 = R.drawable.empty_image,
+                            contentDescriptionResourceId1 = null,
+                            drawableResourceId2 = R.drawable.empty_image,
+                            contentDescriptionResourceId2 = null,
+                            drawableResourceId3 = R.drawable.empty_image,
+                            contentDescriptionResourceId3 = null,
+                            onAccessoryClick = {},
                             onImageClick = {
-                                currentStep = 1
+                                currentStep = (1..3).filter{ it != currentStep }.random()
+
+                            }
+                        )
+                    }
+                    5 -> {
+
+                        CorgiTextAndImage(
+                            textLabelResourceId = R.string.in_love_corgi_description,
+                            drawableResourceId = R.drawable.in_love_corgi,
+                            contentDescriptionResourceId = R.string.in_love_corgi,
+                            drawableResourceId1 = R.drawable.empty_image,
+                            contentDescriptionResourceId1 = null,
+                            drawableResourceId2 = R.drawable.empty_image,
+                            contentDescriptionResourceId2 = null,
+                            drawableResourceId3 = R.drawable.empty_image,
+                            contentDescriptionResourceId3 = null,
+                            onAccessoryClick = {
+                            },
+                            onImageClick = {
+                                currentStep = (1..3).filter{ it != currentStep }.random()
+
                             }
                         )
                     }
@@ -176,11 +237,12 @@ fun CorgiTextAndImage(
     drawableResourceId: Int,
     contentDescriptionResourceId: Int,
     drawableResourceId1: Int,
-    contentDescriptionResourceId1: Int,
+    contentDescriptionResourceId1: Int?,
     drawableResourceId2: Int,
-    contentDescriptionResourceId2: Int,
+    contentDescriptionResourceId2: Int?,
     drawableResourceId3: Int,
-    contentDescriptionResourceId3: Int,
+    contentDescriptionResourceId3: Int?,
+    onAccessoryClick: (Int) -> Unit,
     onImageClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -205,7 +267,6 @@ fun CorgiTextAndImage(
                     modifier = Modifier
                         .wrapContentSize()
                         .size(300.dp)
-
                 )
             }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_vertical)))
@@ -214,32 +275,71 @@ fun CorgiTextAndImage(
                 style = MaterialTheme.typography.bodyLarge
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_vertical)))
-            Row() {
-                Image(
-                    painter = painterResource(id = drawableResourceId1),
-                    contentDescription = stringResource(id = contentDescriptionResourceId1),
-                    modifier = Modifier.size(100.dp)
-                )
-                Image(
-                    painter = painterResource(id = drawableResourceId2),
-                    contentDescription = stringResource(id = contentDescriptionResourceId2),
-                    modifier = Modifier.size(100.dp)
-                )
-                Image(
-                    painter = painterResource(id = drawableResourceId3),
-                    contentDescription = stringResource(id = contentDescriptionResourceId3),
-                    modifier = Modifier.size(100.dp)
-                )
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(
+                    onClick = { onAccessoryClick(drawableResourceId1) },
+                    shape = RectangleShape,
+                    contentPadding = PaddingValues(4.dp),
+
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                ) {
+                    Image(
+                        painter = painterResource(id = drawableResourceId1),
+                        contentDescription = contentDescriptionResourceId1?.let { stringResource(id = it) },
+                        modifier = Modifier
+                            .size(100.dp)
+                            .fillMaxSize()
+                            .clip(RectangleShape)
+
+                    )
+                }
+                Button(
+                    onClick = { onAccessoryClick(drawableResourceId2) },
+                    shape = RectangleShape,
+                    contentPadding = PaddingValues(4.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                ) {
+                    Image(
+                        painter = painterResource(id = drawableResourceId2),
+                        contentDescription = contentDescriptionResourceId2?.let { stringResource(id = it) },
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(RectangleShape)
+                    )
+                }
+                Button(
+                    onClick = { onAccessoryClick(drawableResourceId3) },
+                    shape = RectangleShape,
+                    contentPadding = PaddingValues(4.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                    ) {
+                    Image(
+                        painter = painterResource(id = drawableResourceId3),
+                        contentDescription = contentDescriptionResourceId3?.let { stringResource(id = it) },
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(RectangleShape)
+                    )
+                }
+                
 
             }
 
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
-fun LemonTextAndImagePreview() {
+fun CorgiCarePreview() {
     PNGPetTheme {
         PetCare()
     }

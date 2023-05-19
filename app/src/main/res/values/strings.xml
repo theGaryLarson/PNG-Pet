@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PNG Pet</string>
+    <string name="app_name">Corgi Care</string>
     <string name="bed">Dog bed</string>
     <string name="bed_description">A cozy bed for your pet</string>
     <string name="cat_ball">A ball</string>
@@ -9,19 +9,23 @@
     <string name="dog_ball">A ball</string>
     <string name="dog_ball_description">Your pets ball. Maybe they want to play fetch</string>
     <string name="dog_food">Dog food</string>
-    <string name="dog_food_description">Mmmm… Food!! Maybe your pet is hungry?</string>
+    <string name="dog_food_description">Mmmm… Food!!\nMaybe your pet is hungry?</string>
     <string name="leash">Dog leash</string>
     <string name="leash_description">Maybe your pet wants to go for a walk?</string>
     <string name="shampoo">Dog shampoo</string>
-    <string name="shampoo_description">Uh oh shampoo! Maybe it\'s time to wash your stinky pet</string>
+    <string name="shampoo_description">Uh oh shampoo!\nMaybe it\'s time to wash your stinky pet</string>
+    <string name="water_dish">Water Bowl</string>
+    <string name="water_dish_description">A bowl of fresh water</string>
 
+    <string name="thirsty_corgi">A thirsty Corgi</string>
+    <string name="thirsty_corgi_description">Your pet is panting.\nMaybe it needs a drink of water</string>
     <string name="in_love_corgi">A very happy Corgi</string>
-    <string name="in_love_corgi_description">Whatever you\'re doing, it\'s right! Your pet loves it!</string>
+    <string name="in_love_corgi_description">You know your pet so well</string>
     <string name="hungry_corgi">A hungry Corgi</string>
-    <string name="hungry_corgi_description">You here grumbling. Maybe your pet is hungry</string>
+    <string name="hungry_corgi_description">You here grumbling.\nMaybe your pet is hungry</string>
     <string name="sad_corgi">A sad Corgi</string>
-    <string name="sad_corgi_description">Oh no your pet is so sad</string>
+    <string name="sad_corgi_description">Oh no that\'s not what they wanted</string>
     <string name="sleepy_corgi">A sleepy looking Corgi</string>
-    <string name="sleepy_corgi_description">It looks like your pet may be getting sleepy…</string>
+    <string name="sleepy_corgi_description">Your pet may be getting sleepy…</string>
 
 </resources>
